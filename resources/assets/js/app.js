@@ -1,22 +1,21 @@
+import "core-js/fn/object/assign";
 import Vue from 'vue';
-import sample from './data';
+import { populateAmenitiesAndPrices } from './helpers';
+
+let model = JSON.parse(window.vuebnb_listing_model);
+model = populateAmenitiesAndPrices(model);
 
 var app = new Vue({
     el: '#app',
-    data: {
-        title: sample.title,
-        address: sample.address,
-        about: sample.about,
+    data: Object.assign(model, {
         headerImageStyle: {
-            'background-image': 'url(/images/header.jpg)'
+            'background-image': `url(${model.images[0]})`
         },
-        amenities: sample.amenities,
-        prices: sample.prices,
         contracted: true,
         modalOpen: false
-    },
+    }),
     methods: {
-        escapeKeyListener: function (evt) {
+        escapeKeyListener (evt) {
             if (evt.keyCode === 27 && this.modalOpen) {
                 this.modalOpen = false;
             }
