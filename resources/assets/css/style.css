@@ -223,3 +223,7 @@ body.modal-open {
 	font-weight: 100;
 	line-height: 1;
 }
+
+.image-carousel img {
+	width: 100%;
+}
