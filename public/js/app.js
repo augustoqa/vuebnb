@@ -268,7 +268,7 @@ var model = JSON.parse(window.vuebnb_listing_model);
 model = Object(__WEBPACK_IMPORTED_MODULE_2__helpers__["a" /* populateAmenitiesAndPrices */])(model);
 
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('image-carousel', {
-    template: '<div class="image-carousel">\n        <img v-bind:src="image"/>\n    </div>',
+    template: '\n    <div class="image-carousel">\n        <img v-bind:src="image"/>\n        <div class="controls">\n            <carousel-control></carousel-control>\n            <carousel-control></carousel-control>\n        </div>\n    </div>',
     data: function data() {
         return {
             images: ['/images/1/Image_1.jpg', '/images/1/Image_2.jpg', '/images/1/Image_3.jpg', '/images/1/Image_4.jpg'],
@@ -279,6 +279,11 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('image-carousel', {
     computed: {
         image: function image() {
             return this.images[this.index];
+        }
+    },
+    components: {
+        'carousel-control': {
+            template: '<i class="carousel-control fa fa-2x fa-chevron-left"></i>'
         }
     }
 });
