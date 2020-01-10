@@ -223,35 +223,3 @@ body.modal-open {
 	font-weight: 100;
 	line-height: 1;
 }
-
-.image-carousel {
-	height: 100%;
-	margin-top: -12vh;
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.image-carousel .controls {
-	position: absolute;
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-}
-
-.carousel-control {
-	padding: 1rem;
-	color: #fff;
-	opacity: 0.85;
-}
-
-@media (min-with: 744px) {
-	.carousel-control {
-		font-size: 3rem;
-	}
-}
-
-.image-carousel img {
-	width: 100%;
-}

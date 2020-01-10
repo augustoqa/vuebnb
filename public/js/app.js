@@ -260,56 +260,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__helpers__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ImageCarousel_vue__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_ImageCarousel_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_ImageCarousel_vue__);
+
+
 
 
 
 
 var model = JSON.parse(window.vuebnb_listing_model);
 model = Object(__WEBPACK_IMPORTED_MODULE_2__helpers__["a" /* populateAmenitiesAndPrices */])(model);
-
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component('image-carousel', {
-    props: ['images'],
-    template: '\n    <div class="image-carousel">\n        <img v-bind:src="image"/>\n        <div class="controls">\n            <carousel-control dir="left" @change-image="changeImage">\n            </carousel-control>\n            <carousel-control dir="right" @change-image="changeImage">\n            </carousel-control>\n        </div>\n    </div>',
-    data: function data() {
-        return {
-            index: 0
-        };
-    },
-
-    computed: {
-        image: function image() {
-            return this.images[this.index];
-        }
-    },
-    components: {
-        'carousel-control': {
-            props: ['dir'],
-            template: '<i :class="classes" @click="clicked"></i>',
-            computed: {
-                classes: function classes() {
-                    return 'carousel-control fa fa-2x fa-chevron-' + this.dir;
-                }
-            },
-            methods: {
-                clicked: function clicked() {
-                    this.$emit('change-image', this.dir === 'left' ? -1 : 1);
-                }
-            }
-        }
-    },
-    methods: {
-        changeImage: function changeImage(val) {
-            var newVal = this.index + parseInt(val);
-            if (newVal < 0) {
-                this.index = this.images.length - 1;
-            } else if (newVal === this.images.length) {
-                this.index = 0;
-            } else {
-                this.index = newVal;
-            }
-        }
-    }
-});
 
 var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
     el: '#app',
@@ -342,6 +302,9 @@ var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
     },
     destroyed: function destroyed() {
         document.removeEventListener('keyup', this.escapeKeyListener);
+    },
+    components: {
+        ImageCarousel: __WEBPACK_IMPORTED_MODULE_3__components_ImageCarousel_vue___default.a
     }
 });
 
@@ -13279,6 +13242,368 @@ var groupByCountry = function groupByCountry(listings) {
 };
 
 
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(49)
+}
+var normalizeComponent = __webpack_require__(50)
+/* script */
+var __vue_script__ = __webpack_require__(51)
+/* template */
+var __vue_template__ = __webpack_require__(52)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/components/ImageCarousel.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ad9533f4", Component.options)
+  } else {
+    hotAPI.reload("data-v-ad9533f4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 51 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CarouselControl_vue__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_CarouselControl_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_CarouselControl_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['images'],
+    data: function data() {
+        return {
+            index: 0
+        };
+    },
+
+    computed: {
+        image: function image() {
+            return this.images[this.index];
+        }
+    },
+    methods: {
+        changeImage: function changeImage(val) {
+            var newVal = this.index + parseInt(val);
+            if (newVal < 0) {
+                this.index = this.images.length - 1;
+            } else if (newVal === this.images.length) {
+                this.index = 0;
+            } else {
+                this.index = newVal;
+            }
+        }
+    },
+    components: {
+        CarouselControl: __WEBPACK_IMPORTED_MODULE_0__components_CarouselControl_vue___default.a
+    }
+});
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "image-carousel" }, [
+    _c("img", { attrs: { src: _vm.image } }),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "controls" },
+      [
+        _c("carousel-control", {
+          attrs: { dir: "left" },
+          on: { "change-image": _vm.changeImage }
+        }),
+        _vm._v(" "),
+        _c("carousel-control", {
+          attrs: { dir: "right" },
+          on: { "change-image": _vm.changeImage }
+        })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-ad9533f4", module.exports)
+  }
+}
+
+/***/ }),
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(58)
+}
+var normalizeComponent = __webpack_require__(50)
+/* script */
+var __vue_script__ = __webpack_require__(59)
+/* template */
+var __vue_template__ = __webpack_require__(60)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/components/CarouselControl.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c1c7ef70", Component.options)
+  } else {
+    hotAPI.reload("data-v-c1c7ef70", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 59 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['dir'],
+    computed: {
+        classes: function classes() {
+            return 'carousel-control fa fa-2x fa-chevron-' + this.dir;
+        }
+    },
+    methods: {
+        clicked: function clicked() {
+            this.$emit('change-image', this.dir === 'left' ? -1 : 1);
+        }
+    }
+});
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("i", { class: _vm.classes, on: { click: _vm.clicked } })
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c1c7ef70", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
