@@ -17,13 +17,8 @@
 			<h1>vuebnb</h1>
 		</div>
 		<div id="app">
-			<div class="header">
-				<div class="header-img" 
-					 v-bind:style="headerImageStyle"
-					 v-on:click="openModal">
-					<button class="view-photo">View Photos</button>
-				</div>
-			</div>
+			<header-image :image-url="images[0]" @header-clicked="openModal">	
+			</header-image>
 			<div class="container">
 				<div class="heading">
 					<h1>@{{ title }}</h1>
