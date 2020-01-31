@@ -23,6 +23,7 @@
         padding: 1rem;
         color: #fff;
         opacity: 0.85;
+        cursor: pointer;
     }
 
     @media (min-with: 744px) {

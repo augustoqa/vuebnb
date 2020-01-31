@@ -1,4 +1,11 @@
 
+.about {
+    margin-top: 2em;
+}
+.about h3 {
+    font-size: 22px;
+}
+
 .image-carousel {
     height: 100%;
     margin-top: -12vh;
@@ -21,6 +28,7 @@
     padding: 1rem;
     color: #fff;
     opacity: 0.85;
+    cursor: pointer;
 }
 @media (min-with: 744px) {
 .carousel-control {
@@ -69,34 +77,6 @@ body.modal-open {
     position: relative;
 }
 
-.header {
-    height: 320px;
-}
-.header .header-img {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
-    background-color: #f5f5f5;
-    height: 100%;
-    cursor: pointer;
-    position: relative;
-}
-.header .header-img button {
-    font-size: 14px;
-    padding: 7px 18px;
-    color: #484848;
-    line-height: 1.43;
-    background: white;
-    font-weight: bold;
-    border-radius: 4px;
-    border: 1px solid #c4c4c4;
-}
-.header .header-img .view-photo {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-}
-
 hr { 
     border: 0;
     border-top: 1px solid #dce0e0;
@@ -131,6 +111,34 @@ hr {
 .list .list-item {
         flex: 0 0 100%;
 }
+}
+
+.header {
+    height: 320px;
+}
+.header .header-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-color: #f5f5f5;
+    height: 100%;
+    cursor: pointer;
+    position: relative;
+}
+.header .header-img button {
+    font-size: 14px;
+    padding: 7px 18px;
+    color: #484848;
+    line-height: 1.43;
+    background: white;
+    font-weight: bold;
+    border-radius: 4px;
+    border: 1px solid #c4c4c4;
+}
+.header .header-img .view-photo {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
 }
 
 p {
