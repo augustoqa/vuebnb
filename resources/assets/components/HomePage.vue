@@ -17,21 +17,28 @@
     import { groupByCountry } from '../js/helpers';
     import ListingSummary from './ListingSummary.vue';
 
+    import axios from 'axios';
+
     export default {
         data() {
-            return { listing_groups }
+            return { 
+                listing_groups: []
+            }
         },
         components: {
             ListingSummary
         },
-        beforeRouterEnter(to, from, next) {
+        beforeRouteEnter(to, from, next) {
             let serverData = JSON.parse(window.vuebnb_server_data);
+        
             if (to.path === serverData.path) {
-                let listing_groups = groupByCountry(serverData.listing);
+                let listing_groups = groupByCountry(serverData.listings);
                 next(component => component.listing_groups = listing_groups);
             } else {
-                console.log('Need to get data with AJAX!');
-                next(false);
+                axios.get('/api/').then(({ data }) => {
+                    let listing_groups = groupByCountry(data.listings);
+                    next(component => component.listing_groups = listing_groups);
+                });
             }
         }
     }
