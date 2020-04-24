@@ -33,35 +33,3 @@
         }
     }
 </script>
-
-<style>
-    .home-container {
-        margin: 0 auto;
-        padding: 0 25px;
-    }
-
-    @media (min-width: 1131px) {
-        .home-container {
-            width: 1080px;
-        }
-    }
-
-    .listing-summary-group {
-        padding-bottom: 20px;
-    }
-
-    .listing-summaries {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        overflow: hidden;
-    }
-
-    .listing-summaries > .listing-summary {
-        margin-right: 15px;
-    }
-
-    .listing-summaries > .listing-summary:last-child {
-        margin-right: 0;
-    }
-</style>
