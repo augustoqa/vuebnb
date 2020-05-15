@@ -15511,7 +15511,8 @@ var model = Object(__WEBPACK_IMPORTED_MODULE_0__js_helpers__["b" /* populateAmen
             address: null,
             amenities: [],
             prices: [],
-            images: []
+            images: [],
+            id: null
         };
     },
 
@@ -16010,6 +16011,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ListingSave_vue__ = __webpack_require__(77);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ListingSave_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ListingSave_vue__);
+//
 //
 //
 //
@@ -16021,6 +16025,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     computed: {
         headerImageStyle: function headerImageStyle() {
@@ -16029,7 +16035,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             };
         }
     },
-    props: ['image-url']
+    props: ['image-url', 'id'],
+    components: {
+        ListingSave: __WEBPACK_IMPORTED_MODULE_0__ListingSave_vue___default.a
+    }
 });
 
 /***/ }),
@@ -16052,7 +16061,12 @@ var render = function() {
           }
         }
       },
-      [_c("button", { staticClass: "view-photo" }, [_vm._v("View Photos")])]
+      [
+        _c("listing-save", { attrs: { id: _vm.id } }),
+        _vm._v(" "),
+        _c("button", { staticClass: "view-photo" }, [_vm._v("View Photos")])
+      ],
+      1
     )
   ])
 }
@@ -16199,7 +16213,7 @@ var render = function() {
     [
       _vm.images[0]
         ? _c("header-image", {
-            attrs: { "image-url": _vm.images[0] },
+            attrs: { "image-url": _vm.images[0], id: _vm.id },
             on: { "header-clicked": _vm.openModal }
           })
         : _vm._e(),
