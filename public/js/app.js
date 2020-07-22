@@ -10058,6 +10058,15 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
                 state.listing_summaries = data.listings;
             }
         }
+    },
+    getters: {
+        getListing: function getListing(state) {
+            return function (id) {
+                return state.listings.find(function (listing) {
+                    return id == listing.id;
+                });
+            };
+        }
     }
 }));
 
@@ -14749,12 +14758,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {
         listing: function listing() {
-            var _this = this;
-
-            var listing = this.$store.state.listings.find(function (listing) {
-                return listing.id == _this.$route.params.listing;
-            });
-            return Object(__WEBPACK_IMPORTED_MODULE_0__js_helpers__["b" /* populateAmenitiesAndPrices */])(listing);
+            return Object(__WEBPACK_IMPORTED_MODULE_0__js_helpers__["b" /* populateAmenitiesAndPrices */])(this.$store.getters.getListing(this.$route.params.listing));
         }
     },
     methods: {

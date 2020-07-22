@@ -25,5 +25,10 @@ export default new Vuex.Store({
                 state.listing_summaries = data.listings;
             }
         }
+    },
+    getters: {
+        getListing(state) {
+            return id => state.listings.find(listing => id == listing.id);
+        }
     }
 });
