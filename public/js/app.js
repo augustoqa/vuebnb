@@ -11093,7 +11093,9 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
 router.beforeEach(function (to, from, next) {
     var serverData = JSON.parse(window.vuebnb_server_data);
 
-    if (!serverData.path || to.path !== serverData.path) {
+    if (to.name === 'listing' ? __WEBPACK_IMPORTED_MODULE_5__store__["a" /* default */].getters.getListing(to.params.listing) : __WEBPACK_IMPORTED_MODULE_5__store__["a" /* default */].state.listing_summaries.length > 0) {
+        next();
+    } else if (!serverData.path || to.path !== serverData.path) {
         __WEBPACK_IMPORTED_MODULE_4_axios___default.a.get('/api' + to.path).then(function (_ref) {
             var data = _ref.data;
 
