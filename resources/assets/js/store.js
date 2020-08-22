@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        saved: [],
+        saved: [1, 15],
         listing_summaries: [],
         listings: []
     },

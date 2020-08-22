@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 
 import HomePage from '../components/HomePage'
 import ListingPage from '../components/ListingPage';
+import SavedPage from '../components/SavedPage';
 
 import axios from 'axios';
 import store from './store';
@@ -14,6 +15,7 @@ let router = new VueRouter({
     routes: [
         { path: '/', component: HomePage, name: 'home' },
         { path: '/listing/:listing', component: ListingPage, name: 'listing' },
+        { path: '/saved', component: SavedPage, name: 'saved' },
     ],
     scrollBehavior (to, from, savedPosition) {
         return { x: 0, y: 0 }

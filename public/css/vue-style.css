@@ -143,7 +143,7 @@
     opacity: 0.85;
     cursor: pointer;
 }
-@media (min-with: 744px) {
+@media (min-width: 744px) {
 .carousel-control {
         font-size: 3rem;
 }
@@ -299,4 +299,17 @@ p {
 .about button.more:active {
     text-decoration: underline;
     outline: none;
+}
+
+#saved .listing-summaries {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    overflow: hidden;
+}
+#saved .listing-summaries .listing-summary {
+    padding-bottom: 30px;
+}
+.listing-summaries > .listing-summary {
+    margin-right: 15px;
 }

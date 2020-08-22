@@ -26,7 +26,7 @@
         cursor: pointer;
     }
 
-    @media (min-with: 744px) {
+    @media (min-width: 744px) {
         .carousel-control {
             font-size: 3rem;
         }
