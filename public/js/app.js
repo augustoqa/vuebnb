@@ -10932,12 +10932,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
         CustomFooter: __WEBPACK_IMPORTED_MODULE_0__CustomFooter_vue___default.a
+    },
+    data: function data() {
+        return {
+            csrf_token: window.csrf_token
+        };
+    },
+
+    methods: {
+        logout: function logout() {
+            document.getElementById('logout').submit();
+        }
     }
 });
 
@@ -11102,7 +11127,23 @@ var render = function() {
                 ])
               ],
               1
-            )
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              [
+                _c("router-link", { attrs: { to: { name: "login" } } }, [
+                  _vm._v("Log In")
+                ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("li", [
+              _c("a", { on: { click: _vm.logout } }, [_vm._v("Log Out")]),
+              _vm._v(" "),
+              _vm._m(0)
+            ])
           ])
         ],
         1
@@ -11115,7 +11156,25 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "form",
+      {
+        staticStyle: { display: "hidden" },
+        attrs: { action: "/logout", method: "post", id: "logout" }
+      },
+      [
+        _c("input", {
+          attrs: { type: "hidden", name: "_token", value: "csrf_token" }
+        })
+      ]
+    )
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -15706,7 +15765,7 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = null
+var __vue_script__ = __webpack_require__(153)
 /* template */
 var __vue_template__ = __webpack_require__(117)
 /* template functional */
@@ -15760,53 +15819,62 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "login-container", attrs: { id: "login" } }, [
+    _c("form", { attrs: { role: "form", method: "post", action: "/login" } }, [
+      _c("input", {
+        attrs: { type: "hidden", name: "_token" },
+        domProps: { value: _vm.csrf_token }
+      }),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2)
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "login-container", attrs: { id: "login" } },
-      [
-        _c(
-          "form",
-          { attrs: { role: "form", method: "post", action: "/login" } },
-          [
-            _c("div", { staticClass: "form-control" }, [
-              _c("input", {
-                attrs: {
-                  type: "email",
-                  name: "email",
-                  id: "email",
-                  placeholder: "Email Address",
-                  required: "",
-                  autofocus: ""
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-control" }, [
-              _c("input", {
-                attrs: {
-                  type: "password",
-                  name: "password",
-                  id: "password",
-                  placeholder: "Password",
-                  required: ""
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-control" }, [
-              _c("button", { attrs: { type: "submit" } }, [_vm._v("Log in")])
-            ])
-          ]
-        )
-      ]
-    )
+    return _c("div", { staticClass: "form-control" }, [
+      _c("input", {
+        attrs: {
+          type: "email",
+          name: "email",
+          id: "email",
+          placeholder: "Email Address",
+          required: "",
+          autofocus: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-control" }, [
+      _c("input", {
+        attrs: {
+          type: "password",
+          name: "password",
+          id: "password",
+          placeholder: "Password",
+          required: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-control" }, [
+      _c("button", { attrs: { type: "submit" } }, [_vm._v("Log in")])
+    ])
   }
 ]
 render._withStripped = true
@@ -17714,6 +17782,55 @@ var index = {
 
 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
+
+/***/ }),
+/* 136 */,
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
+/* 153 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            csrf_token: window.csrf_token
+        };
+    }
+});
 
 /***/ })
 /******/ ]);

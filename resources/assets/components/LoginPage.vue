@@ -1,6 +1,7 @@
 <template>
     <div id="login" class="login-container">
         <form role="form" method="post" action="/login">
+            <input type="hidden" name="_token" :value="csrf_token">
             <div class="form-control">
                 <input type="email" name="email" id="email" placeholder="Email Address" required autofocus>
             </div>
@@ -13,6 +14,16 @@
         </form>
     </div>
 </template>
+
+<script>
+    export default {
+        data() {
+            return {
+                csrf_token: window.csrf_token
+            }
+        }
+    }
+</script>
 
 <style>
     #login form {
