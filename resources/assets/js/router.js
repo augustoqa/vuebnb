@@ -30,7 +30,7 @@ router.beforeEach((to, from, next) => {
     if (
         to.name === 'listing'
             ? store.getters.getListing(to.params.listing)
-            : store.state.listing_summaries.length > 0
+            : store.state.listing_summaries.length > 0 || to.name === 'login'
     ) {
         next();
     }
