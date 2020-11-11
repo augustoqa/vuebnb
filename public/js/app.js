@@ -180,7 +180,7 @@ module.exports = function normalizeComponent (
 
 
 var bind = __webpack_require__(22);
-var isBuffer = __webpack_require__(120);
+var isBuffer = __webpack_require__(121);
 
 /*global toString:true*/
 
@@ -9682,7 +9682,7 @@ module.exports = function isCancel(value) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(1);
-var normalizeHeaderName = __webpack_require__(125);
+var normalizeHeaderName = __webpack_require__(126);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -9788,10 +9788,10 @@ module.exports = defaults;
 
 
 var utils = __webpack_require__(1);
-var settle = __webpack_require__(126);
+var settle = __webpack_require__(127);
 var buildURL = __webpack_require__(23);
-var parseHeaders = __webpack_require__(128);
-var isURLSameOrigin = __webpack_require__(129);
+var parseHeaders = __webpack_require__(129);
+var isURLSameOrigin = __webpack_require__(130);
 var createError = __webpack_require__(27);
 
 module.exports = function xhrAdapter(config) {
@@ -9884,7 +9884,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(130);
+      var cookies = __webpack_require__(131);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -9968,7 +9968,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(127);
+var enhanceError = __webpack_require__(128);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -10076,7 +10076,7 @@ module.exports = Cancel;
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(136);
 
 
 
@@ -11142,7 +11142,19 @@ var render = function() {
             _c("li", [
               _c("a", { on: { click: _vm.logout } }, [_vm._v("Log Out")]),
               _vm._v(" "),
-              _vm._m(0)
+              _c(
+                "form",
+                {
+                  staticStyle: { display: "hidden" },
+                  attrs: { action: "/logout", method: "post", id: "logout" }
+                },
+                [
+                  _c("input", {
+                    attrs: { type: "hidden", name: "_token" },
+                    domProps: { value: _vm.csrf_token }
+                  })
+                ]
+              )
             ])
           ])
         ],
@@ -11156,25 +11168,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "form",
-      {
-        staticStyle: { display: "hidden" },
-        attrs: { action: "/logout", method: "post", id: "logout" }
-      },
-      [
-        _c("input", {
-          attrs: { type: "hidden", name: "_token", value: "csrf_token" }
-        })
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -11199,7 +11193,7 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_SavedPage___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_SavedPage__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_LoginPage__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_LoginPage___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_LoginPage__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_axios__ = __webpack_require__(118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_axios__ = __webpack_require__(119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_axios__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__store__ = __webpack_require__(30);
 
@@ -15765,9 +15759,9 @@ function injectStyle (ssrContext) {
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(153)
+var __vue_script__ = __webpack_require__(117)
 /* template */
-var __vue_template__ = __webpack_require__(117)
+var __vue_template__ = __webpack_require__(118)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -15813,6 +15807,38 @@ module.exports = Component.exports
 
 /***/ }),
 /* 117 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            csrf_token: window.csrf_token
+        };
+    }
+});
+
+/***/ }),
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -15887,13 +15913,13 @@ if (false) {
 }
 
 /***/ }),
-/* 118 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(119);
+module.exports = __webpack_require__(120);
 
 /***/ }),
-/* 119 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15901,7 +15927,7 @@ module.exports = __webpack_require__(119);
 
 var utils = __webpack_require__(1);
 var bind = __webpack_require__(22);
-var Axios = __webpack_require__(121);
+var Axios = __webpack_require__(122);
 var mergeConfig = __webpack_require__(28);
 var defaults = __webpack_require__(25);
 
@@ -15937,14 +15963,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(29);
-axios.CancelToken = __webpack_require__(133);
+axios.CancelToken = __webpack_require__(134);
 axios.isCancel = __webpack_require__(24);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(134);
+axios.spread = __webpack_require__(135);
 
 module.exports = axios;
 
@@ -15953,7 +15979,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 120 */
+/* 121 */
 /***/ (function(module, exports) {
 
 /*!
@@ -15970,7 +15996,7 @@ module.exports = function isBuffer (obj) {
 
 
 /***/ }),
-/* 121 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15978,8 +16004,8 @@ module.exports = function isBuffer (obj) {
 
 var utils = __webpack_require__(1);
 var buildURL = __webpack_require__(23);
-var InterceptorManager = __webpack_require__(122);
-var dispatchRequest = __webpack_require__(123);
+var InterceptorManager = __webpack_require__(123);
+var dispatchRequest = __webpack_require__(124);
 var mergeConfig = __webpack_require__(28);
 
 /**
@@ -16063,7 +16089,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 122 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16122,18 +16148,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 123 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(1);
-var transformData = __webpack_require__(124);
+var transformData = __webpack_require__(125);
 var isCancel = __webpack_require__(24);
 var defaults = __webpack_require__(25);
-var isAbsoluteURL = __webpack_require__(131);
-var combineURLs = __webpack_require__(132);
+var isAbsoluteURL = __webpack_require__(132);
+var combineURLs = __webpack_require__(133);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -16215,7 +16241,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 124 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16242,7 +16268,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 125 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16261,7 +16287,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 126 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16293,7 +16319,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 127 */
+/* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16342,7 +16368,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 128 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16402,7 +16428,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16477,7 +16503,7 @@ module.exports = (
 
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16537,7 +16563,7 @@ module.exports = (
 
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16558,7 +16584,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16579,7 +16605,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16643,7 +16669,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -16677,7 +16703,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17782,55 +17808,6 @@ var index = {
 
 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(4)))
-
-/***/ }),
-/* 136 */,
-/* 137 */,
-/* 138 */,
-/* 139 */,
-/* 140 */,
-/* 141 */,
-/* 142 */,
-/* 143 */,
-/* 144 */,
-/* 145 */,
-/* 146 */,
-/* 147 */,
-/* 148 */,
-/* 149 */,
-/* 150 */,
-/* 151 */,
-/* 152 */,
-/* 153 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            csrf_token: window.csrf_token
-        };
-    }
-});
 
 /***/ })
 /******/ ]);

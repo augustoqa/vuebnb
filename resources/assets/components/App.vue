@@ -20,7 +20,7 @@
                         method="post"
                         id="logout"
                         >
-                        <input type="hidden" name="_token" value="csrf_token">
+                        <input type="hidden" name="_token" :value="csrf_token">
                     </form>
                 </li>
             </ul>
