@@ -10077,6 +10077,8 @@ module.exports = Cancel;
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(136);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router__ = __webpack_require__(69);
+
 
 
 
@@ -10086,23 +10088,31 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].use(__WEBPACK_IMPORTED_MODU
     state: {
         saved: [1, 15],
         listing_summaries: [],
-        listings: []
+        listings: [],
+        auth: false
     },
     mutations: {
         toggleSaved: function toggleSaved(state, id) {
-            var index = state.saved.findIndex(function (saved) {
-                return saved === id;
-            });
-            if (index === -1) {
-                state.saved.push(id);
+            if (state.auth) {
+                var index = state.saved.findIndex(function (saved) {
+                    return saved === id;
+                });
+                if (index === -1) {
+                    state.saved.push(id);
+                } else {
+                    state.saved.splice(index, 1);
+                }
             } else {
-                state.saved.splice(index, 1);
+                __WEBPACK_IMPORTED_MODULE_2__router__["a" /* default */].push('/login');
             }
         },
         addData: function addData(state, _ref) {
             var route = _ref.route,
                 data = _ref.data;
 
+            if (data.auth) {
+                state.auth = data.auth;
+            }
             if (route === 'listing') {
                 state.listings.push(data.listing);
             } else {
@@ -11119,43 +11129,45 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("ul", { staticClass: "links" }, [
-            _c(
-              "li",
-              [
-                _c("router-link", { attrs: { to: { name: "saved" } } }, [
-                  _vm._v("Saved")
-                ])
-              ],
-              1
-            ),
+            _vm.$store.state.auth
+              ? _c(
+                  "li",
+                  [
+                    _c("router-link", { attrs: { to: { name: "saved" } } }, [
+                      _vm._v("Saved")
+                    ])
+                  ],
+                  1
+                )
+              : _vm._e(),
             _vm._v(" "),
-            _c(
-              "li",
-              [
-                _c("router-link", { attrs: { to: { name: "login" } } }, [
-                  _vm._v("Log In")
+            _vm.$store.state.auth
+              ? _c("li", [
+                  _c("a", { on: { click: _vm.logout } }, [_vm._v("Log Out")]),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      staticStyle: { display: "hidden" },
+                      attrs: { action: "/logout", method: "post", id: "logout" }
+                    },
+                    [
+                      _c("input", {
+                        attrs: { type: "hidden", name: "_token" },
+                        domProps: { value: _vm.csrf_token }
+                      })
+                    ]
+                  )
                 ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("li", [
-              _c("a", { on: { click: _vm.logout } }, [_vm._v("Log Out")]),
-              _vm._v(" "),
-              _c(
-                "form",
-                {
-                  staticStyle: { display: "hidden" },
-                  attrs: { action: "/logout", method: "post", id: "logout" }
-                },
-                [
-                  _c("input", {
-                    attrs: { type: "hidden", name: "_token" },
-                    domProps: { value: _vm.csrf_token }
-                  })
-                ]
-              )
-            ])
+              : _c(
+                  "li",
+                  [
+                    _c("router-link", { attrs: { to: { name: "login" } } }, [
+                      _vm._v("Log In")
+                    ])
+                  ],
+                  1
+                )
           ])
         ],
         1
